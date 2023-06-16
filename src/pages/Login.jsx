@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+import { useForm } from '../hooks/useForm'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -31,13 +31,9 @@ const Button = styled.button`
 	border: none;
 	border-radius: 5px;
 `
-const Login = () => {
-	const [email, setEmail] = useState('')
-	const [password, setPassword] = useState('')
-	const [errorEmail, setErrorEmail] = useState('')
-	const [errorPassword, setErrorPassword] = useState('')
-	const isFirstPassword = useRef(true)
-	const isFirstEmail = useRef(true)
+export const Login = () => {
+	const { email, setEmail, password, setPassword, errorEmail, errorPassword } =
+		useForm()
 
 	const handleEmail = ({ target: { value } }) => {
 		setEmail(value)
@@ -47,39 +43,6 @@ const Login = () => {
 		setPassword(value)
 	}
 
-	useEffect(() => {
-		if (isFirstPassword.current) {
-			isFirstPassword.current = password === ''
-			return
-		}
-		if (password === '') {
-			setErrorPassword('Este campo no puede estar vacío')
-			return
-		}
-		if (password.length < 7) {
-			setErrorPassword('Introduzca una contraseña válida')
-			return
-		}
-
-		setErrorPassword('')
-	}, [password])
-
-	useEffect(() => {
-		if (isFirstEmail.current) {
-			isFirstEmail.current = email === ''
-			return
-		}
-		if (email === '') {
-			setErrorEmail('Este campo no puede estar vacío')
-			return
-		}
-		if (!email.match(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/)) {
-			setErrorEmail('Introduce un correo electrónico válido')
-			return
-		}
-
-		setErrorEmail('')
-	}, [email])
 	return (
 		<Container>
 			<Title>Pokedex</Title>
@@ -101,5 +64,3 @@ const Login = () => {
 		</Container>
 	)
 }
-
-export default Login
