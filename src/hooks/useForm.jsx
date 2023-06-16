@@ -4,42 +4,50 @@ export const useForm = () => {
 	const [password, setPassword] = useState('')
 	const [errorEmail, setErrorEmail] = useState('')
 	const [errorPassword, setErrorPassword] = useState('')
-	const isFirstPassword = useRef(true)
-	const isFirstEmail = useRef(true)
+	const error = useRef(true)
 
-	useEffect(() => {
-		if (isFirstEmail.current) {
-			isFirstEmail.current = email === ''
-			return
-		}
+	const onErrorEmail = (email) => {
 		if (email === '') {
 			setErrorEmail('Este campo no puede estar vacío')
+			error.current = true
 			return
 		}
 		if (!email.match(/[a-z0-9]+@[a-z]+\.[a-z]{2,3}/)) {
 			setErrorEmail('Introduce un correo electrónico válido')
+			error.current = true
 			return
 		}
+		error.current = false
+	}
 
-		setErrorEmail('')
-	}, [email])
-
-	useEffect(() => {
-		if (isFirstPassword.current) {
-			isFirstPassword.current = password === ''
-			return
-		}
+	const onErrorPassword = (password) => {
 		if (password === '') {
 			setErrorPassword('Este campo no puede estar vacío')
+			error.current = true
 			return
 		}
 		if (password.length < 7) {
 			setErrorPassword('Introduzca una contraseña válida')
+			error.current = true
 			return
 		}
+		error.current = false
+	}
 
+	useEffect(() => {
+		setErrorEmail('')
 		setErrorPassword('')
-	}, [password])
+	}, [email, password])
 
-	return { email, setEmail, password, setPassword, errorEmail, errorPassword }
+	return {
+		email,
+		setEmail,
+		password,
+		setPassword,
+		errorEmail,
+		onErrorEmail,
+		errorPassword,
+		onErrorPassword,
+		error,
+	}
 }
