@@ -1,4 +1,6 @@
 import { useForm } from '../hooks/useForm'
+import { Button } from '../components/Button'
+import { Title } from '../components/Title'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -17,12 +19,6 @@ const Form = styled.form`
 	row-gap: 2rem;
 `
 
-const Title = styled.h1`
-	color: #393838;
-	font-size: 3rem;
-	margin-bottom: 4rem;
-`
-
 const Input = styled.input`
 	border: 1px solid #393838;
 	border-radius: 5px;
@@ -30,14 +26,6 @@ const Input = styled.input`
 	font-size: 1rem;
 `
 
-const Button = styled.button`
-	color: #fff;
-	background-color: #393838;
-	font-size: 1rem;
-	padding: 10px 20px;
-	border: none;
-	border-radius: 5px;
-`
 export const Login = () => {
 	const {
 		email,

@@ -1,12 +1,16 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchPokemonsWithDetail } from '../slices/dataSlice'
+import { Header } from '../components/Header'
+import styled from 'styled-components'
+
+const Container = styled.div`
+	height: 100vh;
+`
 export const Home = () => {
-	const pokemons = useSelector((state) => state.data.pokemons)
-	const dispatch = useDispatch()
-	useEffect(() => {
-		dispatch(fetchPokemonsWithDetail())
-	}, [])
-	console.log(pokemons)
-	return <div>Home</div>
+	return (
+		<Container>
+			<Header />
+		</Container>
+	)
 }
