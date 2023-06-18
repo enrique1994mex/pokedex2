@@ -13,9 +13,10 @@ const ItemTitle = styled.div`
 	color: #393838;
 	text-align: center;
 	font-weight: 600;
+	margin: 35px 0px;
 `
 
-export const Tabla = ({ data }) => {
+export const Tabla = ({ data, currentPagination }) => {
 	return (
 		<Table>
 			<Row>
@@ -25,9 +26,16 @@ export const Tabla = ({ data }) => {
 				<ItemTitle>Tipos </ItemTitle>
 				<ItemTitle>Habilidades</ItemTitle>
 			</Row>
-			{data?.results.map((pokemon, index) => (
-				<ItemList key={pokemon.name} pokemon={pokemon} index={index} />
-			))}
+			{data?.results
+				.slice(currentPagination * 5, (currentPagination + 1) * 5)
+				.map((pokemon, index) => (
+					<ItemList
+						key={pokemon.name}
+						pokemon={pokemon}
+						index={index}
+						currentPagination={currentPagination}
+					/>
+				))}
 		</Table>
 	)
 }

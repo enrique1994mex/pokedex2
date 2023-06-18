@@ -21,10 +21,15 @@ const ContainerSearch = styled.div`
 	justify-content: space-between;
 `
 
+const ButtonList = styled(Button)`
+	width: 180px;
+`
+
 const ButtonGrid = styled(Button)`
 	background-color: #fff;
 	color: #393838;
 	border: 1px solid #393838;
+	width: 180px;
 `
 
 export const Header = () => {
@@ -34,7 +39,7 @@ export const Header = () => {
 			<ContainerSearch>
 				<Search />
 				<div>
-					<Button>Lista</Button>
+					<ButtonList>Lista</ButtonList>
 					<ButtonGrid>Cuadrícula</ButtonGrid>
 				</div>
 			</ContainerSearch>

@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { useGetPokemonsQuery } from '../services/pokemons'
 import { Header } from '../components/Header'
 import { List } from '../components/List'
@@ -7,11 +8,12 @@ const Container = styled.div`
 	height: 100vh;
 `
 export const Home = () => {
-	const { data, error, isLoading } = useGetPokemonsQuery(10)
+	const numPokemons = useRef(100)
+	const { data } = useGetPokemonsQuery(numPokemons.current)
 	return (
 		<Container>
 			<Header />
-			<List data={data} />
+			<List data={data} numPokemons={numPokemons.current} />
 		</Container>
 	)
 }
