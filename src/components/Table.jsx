@@ -16,7 +16,7 @@ const ItemTitle = styled.div`
 	margin: 35px 0px;
 `
 
-export const Tabla = ({ data, currentPagination }) => {
+export const TableItems = ({ data, currentPagination }) => {
 	return (
 		<Table>
 			<Row>

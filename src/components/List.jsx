@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Tabla } from './Tabla'
+import { TableItems } from './Table'
 import { Button } from './UI/Button'
 import { Pagination } from './Pagination'
 import styled from 'styled-components'
@@ -9,7 +9,6 @@ const Container = styled.div`
 	align-items: center;
 	justify-content: center;
 	flex-wrap: wrap;
-	margin: 20px 70px;
 `
 
 const Table2 = styled.div`
@@ -30,7 +29,7 @@ export const List = ({ data, numPokemons }) => {
 	const [currentPagination, setCurrentPagination] = useState(0)
 	return (
 		<Container>
-			<Tabla data={data} currentPagination={currentPagination} />
+			<TableItems data={data} currentPagination={currentPagination} />
 			<Table2>
 				<ButtonShiny>Shiny</ButtonShiny>
 				<ButtonShiny>Shiny</ButtonShiny>

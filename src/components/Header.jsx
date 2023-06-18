@@ -6,9 +6,8 @@ import styled from 'styled-components'
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin: 20px 70px;
+	margin-bottom: 40px;
 `
-
 const TitleSearch = styled(Title)`
 	font-size: 2rem;
 	margin-top: 2.5rem;
@@ -20,27 +19,36 @@ const ContainerSearch = styled.div`
 	align-items: center;
 	justify-content: space-between;
 `
-
-const ButtonList = styled(Button)`
-	width: 180px;
-`
-
-const ButtonGrid = styled(Button)`
-	background-color: #fff;
-	color: #393838;
+const ButtonSearch = styled(Button)`
+	background-color: ${(props) => (props.active ? '#393838' : '#fff')};
+	color: ${(props) => (props.active ? '#fff' : '#393838')};
 	border: 1px solid #393838;
-	width: 180px;
+	width: 160px;
 `
 
-export const Header = () => {
+export const Header = ({ currentView, setCurrentView }) => {
 	return (
 		<Container>
 			<TitleSearch>Pokédex</TitleSearch>
 			<ContainerSearch>
 				<Search />
 				<div>
-					<ButtonList>Lista</ButtonList>
-					<ButtonGrid>Cuadrícula</ButtonGrid>
+					<ButtonSearch
+						onClick={() => {
+							setCurrentView(true)
+						}}
+						active={currentView}
+					>
+						Lista
+					</ButtonSearch>
+					<ButtonSearch
+						onClick={() => {
+							setCurrentView(false)
+						}}
+						active={!currentView}
+					>
+						Cuadrícula
+					</ButtonSearch>
 				</div>
 			</ContainerSearch>
 		</Container>
