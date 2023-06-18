@@ -1,6 +1,6 @@
 import { Search } from './Search'
-import { Button } from './Button'
-import { Title } from './Title'
+import { Button } from './UI/Button'
+import { Title } from './UI/Title'
 import styled from 'styled-components'
 
 const Container = styled.div`

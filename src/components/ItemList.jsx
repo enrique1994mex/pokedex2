@@ -1,6 +1,6 @@
 import { useGetPokemonQuery } from '../services/pokemons'
-import { Row } from './Row'
-import { Item } from './Item'
+import { Row } from './UI/Row'
+import { Item } from './UI/Item'
 
 export const ItemList = ({ pokemon, index, currentPagination }) => {
 	const { data } = useGetPokemonQuery(pokemon.name)

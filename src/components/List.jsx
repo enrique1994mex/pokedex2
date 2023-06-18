@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Tabla } from './Tabla'
-import { Button } from './Button'
+import { Button } from './UI/Button'
 import { Pagination } from './Pagination'
 import styled from 'styled-components'
 

@@ -1,4 +1,4 @@
-import { Row } from './Row'
+import { Row } from './UI/Row'
 import { ItemList } from './ItemList'
 import styled from 'styled-components'
 
