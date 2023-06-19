@@ -1,9 +1,22 @@
+import { useEffect } from 'react'
 import { useGetPokemonQuery } from '../services/pokemons'
 import { Row } from './UI/Row'
 import { Item } from './UI/Item'
 
-export const ItemList = ({ pokemon, index, currentPagination }) => {
+export const ItemList = ({
+	pokemon,
+	index,
+	currentPagination,
+	setShiny,
+	numPokemon,
+}) => {
 	const { data } = useGetPokemonQuery(pokemon.name)
+	useEffect(() => {
+		if (numPokemon === index + 1 + currentPagination * 5) {
+			setShiny(data?.sprites)
+		}
+	}, [numPokemon])
+
 	return (
 		<Row key={pokemon.name}>
 			<Item>{index + 1 + currentPagination * 5}</Item>

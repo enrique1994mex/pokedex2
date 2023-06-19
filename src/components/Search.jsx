@@ -3,7 +3,6 @@ import SearchSvg from '../assets/search.svg'
 
 const Container = styled.div`
 	position: relative;
-	width: 400px;
 	opacity: 0.5;
 `
 

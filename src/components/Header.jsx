@@ -17,7 +17,6 @@ const TitleSearch = styled(Title)`
 const ContainerSearch = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 `
 const ButtonSearch = styled(Button)`
 	background-color: ${(props) => (props.active ? '#393838' : '#fff')};
@@ -30,9 +29,11 @@ export const Header = ({ currentView, setCurrentView }) => {
 	return (
 		<Container>
 			<TitleSearch>Pokédex</TitleSearch>
-			<ContainerSearch>
-				<Search />
-				<div>
+			<ContainerSearch className='row justify-content-between'>
+				<div className='col-4'>
+					<Search />
+				</div>
+				<div className='col-4 d-flex justify-content-end'>
 					<ButtonSearch
 						onClick={() => {
 							setCurrentView(true)

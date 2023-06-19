@@ -16,7 +16,12 @@ const ItemTitle = styled.div`
 	margin: 35px 0px;
 `
 
-export const TableItems = ({ data, currentPagination }) => {
+export const TableItems = ({
+	data,
+	currentPagination,
+	setShiny,
+	numPokemon,
+}) => {
 	return (
 		<Table>
 			<Row>
@@ -34,6 +39,8 @@ export const TableItems = ({ data, currentPagination }) => {
 						pokemon={pokemon}
 						index={index}
 						currentPagination={currentPagination}
+						setShiny={setShiny}
+						numPokemon={numPokemon}
 					/>
 				))}
 		</Table>
