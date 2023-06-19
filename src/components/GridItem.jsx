@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react'
 import { useGetPokemonQuery } from '../services/pokemons'
 import { Button } from './UI/Button'
 import styled from 'styled-components'
@@ -43,9 +44,33 @@ const Paragraph = styled.p`
 	}
 `
 export const GridItem = ({ name }) => {
-	const { data } = useGetPokemonQuery(name)
+	const [namePokemon, setNamePokemon] = useState(null)
+	const node = useRef(null)
+	const { data } = useGetPokemonQuery(namePokemon)
+
+	useEffect(() => {
+		// nuevo observador
+		const observer = new IntersectionObserver((entries) => {
+			entries.forEach((entry) => {
+				// onIntersectionObserver
+				if (entry.isIntersecting) {
+					setNamePokemon(name)
+				}
+			})
+		})
+
+		// observer node
+		if (node.current) {
+			observer.observe(node.current)
+		}
+		// desconectar
+		return () => {
+			observer.disconnect()
+		}
+	}, [name])
+
 	return (
-		<Cart>
+		<Cart ref={node}>
 			<img src={data?.sprites?.front_default} />
 			<Title>{name}</Title>
 			<Info>
