@@ -43,7 +43,7 @@ const Paragraph = styled.p`
 		text-transform: uppercase;
 	}
 `
-export const GridItem = ({ name }) => {
+export const GridItem = ({ name, setShiny }) => {
 	const [namePokemon, setNamePokemon] = useState(null)
 	const node = useRef(null)
 	const { data } = useGetPokemonQuery(namePokemon)
@@ -69,6 +69,10 @@ export const GridItem = ({ name }) => {
 		}
 	}, [name])
 
+	const handleShiny = () => {
+		setShiny(data?.sprites)
+	}
+
 	return (
 		<Cart ref={node}>
 			<img src={data?.sprites?.front_default} />
@@ -82,7 +86,13 @@ export const GridItem = ({ name }) => {
 					<Paragraph>{data?.types[0]?.type?.name}</Paragraph>
 					<Paragraph>{data?.types[1]?.type?.name}</Paragraph>
 				</InfoTypes>
-				<ButtonShiny>Shiny</ButtonShiny>
+				<ButtonShiny
+					data-bs-toggle='modal'
+					data-bs-target='#pokemonModal'
+					onClick={handleShiny}
+				>
+					Shiny
+				</ButtonShiny>
 			</Footer>
 		</Cart>
 	)

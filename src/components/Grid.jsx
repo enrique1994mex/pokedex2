@@ -1,4 +1,6 @@
+import { useState } from 'react'
 import { GridItem } from './GridItem'
+import { Modal } from './Modal'
 import styled from 'styled-components'
 
 const Container = styled.div`
@@ -8,11 +10,13 @@ const Container = styled.div`
 `
 
 export const Grid = ({ data }) => {
+	const [shiny, setShiny] = useState({})
 	return (
 		<Container>
 			{data?.results.map((pokemon) => (
-				<GridItem key={pokemon.name} name={pokemon.name} />
+				<GridItem key={pokemon.name} name={pokemon.name} setShiny={setShiny} />
 			))}
+			<Modal shiny={shiny} />
 		</Container>
 	)
 }
