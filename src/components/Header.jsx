@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { Search } from './Search'
 import { Button } from './UI/Button'
 import { Title } from './UI/Title'
@@ -18,14 +19,23 @@ const ContainerSearch = styled.div`
 	display: flex;
 	align-items: center;
 `
-const ButtonSearch = styled(Button)`
-	background-color: ${(props) => (props.active ? '#393838' : '#fff')};
-	color: ${(props) => (props.active ? '#fff' : '#393838')};
+const ButtonList = styled(Button)`
+	background-color: ${(props) =>
+		props.$active === 'true' ? '#393838' : '#fff'};
+	color: ${(props) => (props.$active === 'true' ? '#fff' : '#393838')};
 	border: 1px solid #393838;
 	width: 160px;
 `
 
+const ButtonGrid = styled(Button)`
+	background-color: ${(props) =>
+		props.$active === 'false' ? '#393838' : '#fff'};
+	color: ${(props) => (props.$active === 'false' ? '#fff' : '#393838')};
+	border: 1px solid #393838;
+	width: 160px;
+`
 export const Header = ({ currentView, setCurrentView }) => {
+	const [color, setColor] = useState('true')
 	return (
 		<Container>
 			<TitleSearch>Pokédex</TitleSearch>
@@ -34,22 +44,24 @@ export const Header = ({ currentView, setCurrentView }) => {
 					<Search />
 				</div>
 				<div className='col-4 d-flex justify-content-end'>
-					<ButtonSearch
+					<ButtonList
 						onClick={() => {
 							setCurrentView(true)
+							setColor('true')
 						}}
-						active={currentView}
+						$active={color}
 					>
 						Lista
-					</ButtonSearch>
-					<ButtonSearch
+					</ButtonList>
+					<ButtonGrid
 						onClick={() => {
 							setCurrentView(false)
+							setColor('false')
 						}}
-						active={!currentView}
+						$active={color}
 					>
 						Cuadrícula
-					</ButtonSearch>
+					</ButtonGrid>
 				</div>
 			</ContainerSearch>
 		</Container>

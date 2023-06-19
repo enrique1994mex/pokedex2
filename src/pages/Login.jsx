@@ -1,3 +1,5 @@
+import { Navigate } from 'react-router-dom'
+import { useAuth } from '../hooks/useAuth'
 import { useForm } from '../hooks/useForm'
 import { Button } from '../components/UI/Button'
 import { Title } from '../components/UI/Title'
@@ -39,6 +41,8 @@ export const Login = () => {
 		error,
 	} = useForm()
 
+	const { login, user } = useAuth()
+
 	const handleEmail = ({ target: { value } }) => {
 		setEmail(value)
 	}
@@ -52,13 +56,16 @@ export const Login = () => {
 		onErrorEmail(email)
 		onErrorPassword(password)
 		if (email && password && !error.current) {
-			console.log('Aqui pasa la prueba')
 			const data = {
 				email,
 				password,
 			}
-			console.log(data)
+			login(data)
 		}
+	}
+
+	if (user?.email) {
+		return <Navigate to='/' />
 	}
 
 	return (
