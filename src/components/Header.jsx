@@ -34,14 +34,14 @@ const ButtonGrid = styled(Button)`
 	border: 1px solid #393838;
 	width: 160px;
 `
-export const Header = ({ currentView, setCurrentView }) => {
+export const Header = ({ currentView, setCurrentView, setSearch }) => {
 	const [color, setColor] = useState('true')
 	return (
 		<Container>
 			<TitleSearch>Pokédex</TitleSearch>
 			<ContainerSearch className='row justify-content-between'>
 				<div className='col-4'>
-					<Search />
+					<Search setSearch={setSearch} />
 				</div>
 				<div className='col-4 d-flex justify-content-end'>
 					<ButtonList

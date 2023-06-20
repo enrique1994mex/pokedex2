@@ -11,6 +11,7 @@ const Container = styled.div`
 
 export const Grid = ({ data }) => {
 	const [shiny, setShiny] = useState({})
+	console.log(data)
 	return (
 		<Container>
 			{data?.results.map((pokemon) => (

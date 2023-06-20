@@ -1,7 +1,9 @@
+import { useCallback, useState } from 'react'
+import debounce from 'just-debounce-it'
 import styled from 'styled-components'
 import SearchSvg from '../assets/search.svg'
 
-const Container = styled.div`
+const Form = styled.form`
 	position: relative;
 	opacity: 0.5;
 `
@@ -24,11 +26,25 @@ const Img = styled.img`
 	transform: translateY(-50%);
 `
 
-export const Search = () => {
+export const Search = ({ setSearch }) => {
+	const [searchInput, setSearchInput] = useState('')
+
+	const debouncedGetPokemon = useCallback(
+		debounce((search) => {
+			setSearch(search)
+		}, 1000),
+		[]
+	)
+
+	const handleInput = ({ target: { value } }) => {
+		setSearchInput(value)
+		debouncedGetPokemon(value)
+	}
+
 	return (
-		<Container>
-			<Input />
+		<Form>
+			<Input value={searchInput} onChange={handleInput} />
 			<Img src={SearchSvg} />
-		</Container>
+		</Form>
 	)
 }
