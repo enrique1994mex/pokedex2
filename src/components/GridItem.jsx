@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { useGetPokemonQuery } from '../services/pokemons'
+import { StyledLink } from './UI/StyledLink'
 import { Button } from './UI/Button'
 import { Card } from './UI/Card'
 import styled from 'styled-components'
@@ -70,12 +71,14 @@ export const GridItem = ({ name, setShiny }) => {
 
 	return (
 		<Card ref={node}>
-			<img src={data?.sprites?.front_default} />
-			<Title>{name}</Title>
-			<Info>
-				<Paragraph>{data?.abilities[0]?.ability?.name}</Paragraph>
-				<Paragraph>{data?.abilities[1]?.ability?.name}</Paragraph>
-			</Info>
+			<StyledLink to={`pokemon/${data?.name}`}>
+				<img src={data?.sprites?.front_default} />
+				<Title>{name}</Title>
+				<Info>
+					<Paragraph>{data?.abilities[0]?.ability?.name}</Paragraph>
+					<Paragraph>{data?.abilities[1]?.ability?.name}</Paragraph>
+				</Info>
+			</StyledLink>
 			<Footer>
 				<InfoTypes>
 					<Paragraph>{data?.types[0]?.type?.name}</Paragraph>

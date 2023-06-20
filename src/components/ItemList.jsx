@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
-import { Link } from 'react-router-dom'
 import { useGetPokemonQuery } from '../services/pokemons'
+import { StyledLink } from './UI/StyledLink'
 import { Row } from './UI/Row'
 import { Item } from './UI/Item'
 
@@ -19,7 +19,7 @@ export const ItemList = ({
 	}, [numPokemon])
 
 	return (
-		<Link to={`pokemon/${data?.name}`}>
+		<StyledLink to={`pokemon/${data?.name}`}>
 			<Row key={pokemon.name}>
 				<Item>{index + 1 + currentPagination * 5}</Item>
 				<Item>{pokemon.name}</Item>
@@ -35,6 +35,6 @@ export const ItemList = ({
 					<p>{data?.abilities[1]?.ability?.name}</p>
 				</Item>
 			</Row>
-		</Link>
+		</StyledLink>
 	)
 }
