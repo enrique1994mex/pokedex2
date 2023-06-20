@@ -3,4 +3,6 @@ import styled from 'styled-components'
 
 export const StyledLink = styled(Link)`
 	text-decoration: none;
+	display: flex;
+	flex-direction: column;
 `

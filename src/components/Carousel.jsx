@@ -1,9 +1,17 @@
+import styled from 'styled-components'
+
+const Image = styled.img`
+	width: 500px;
+	height: 500px;
+	object-fit: contain;
+`
+
 export const Carousel = ({ sprites }) => {
 	return (
 		<div id='carouselExample' className='carousel slide'>
 			<div className='carousel-inner'>
 				<div className='carousel-item active'>
-					<img
+					<Image
 						src={`${
 							sprites?.front_default
 								? sprites?.front_default
@@ -14,7 +22,7 @@ export const Carousel = ({ sprites }) => {
 					/>
 				</div>
 				<div className='carousel-item'>
-					<img
+					<Image
 						src={`${
 							sprites?.back_default
 								? sprites?.back_default
@@ -25,7 +33,7 @@ export const Carousel = ({ sprites }) => {
 					/>
 				</div>
 				<div className='carousel-item'>
-					<img
+					<Image
 						src={`${
 							sprites?.front_female
 								? sprites?.front_female
@@ -36,7 +44,7 @@ export const Carousel = ({ sprites }) => {
 					/>
 				</div>
 				<div className='carousel-item'>
-					<img
+					<Image
 						src={`${
 							sprites?.back_female
 								? sprites?.back_female
@@ -47,7 +55,7 @@ export const Carousel = ({ sprites }) => {
 					/>
 				</div>
 				<div className='carousel-item'>
-					<img
+					<Image
 						src={`${
 							sprites?.front_shiny
 								? sprites?.front_shiny
@@ -58,7 +66,7 @@ export const Carousel = ({ sprites }) => {
 					/>
 				</div>
 				<div className='carousel-item'>
-					<img
+					<Image
 						src={`${
 							sprites?.back_shiny
 								? sprites?.back_shiny
@@ -69,7 +77,7 @@ export const Carousel = ({ sprites }) => {
 					/>
 				</div>
 				<div className='carousel-item'>
-					<img
+					<Image
 						src={`${
 							sprites?.front_shiny_female
 								? sprites?.front_shiny_female
@@ -80,7 +88,7 @@ export const Carousel = ({ sprites }) => {
 					/>
 				</div>
 				<div className='carousel-item'>
-					<img
+					<Image
 						src={`${
 							sprites?.back_shiny_female
 								? sprites?.back_shiny_female
