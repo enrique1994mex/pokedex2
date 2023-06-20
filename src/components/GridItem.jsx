@@ -1,14 +1,9 @@
 import { useEffect, useRef, useState } from 'react'
 import { useGetPokemonQuery } from '../services/pokemons'
 import { Button } from './UI/Button'
+import { Card } from './UI/Card'
 import styled from 'styled-components'
 
-const Cart = styled.div`
-	display: flex;
-	flex-direction: column;
-	border: 1px solid rgba(57, 56, 56, 0.5);
-	padding: 10px 15px;
-`
 const Title = styled.h2`
 	color: #393838;
 	font-size: 1.5rem;
@@ -74,7 +69,7 @@ export const GridItem = ({ name, setShiny }) => {
 	}
 
 	return (
-		<Cart ref={node}>
+		<Card ref={node}>
 			<img src={data?.sprites?.front_default} />
 			<Title>{name}</Title>
 			<Info>
@@ -94,6 +89,6 @@ export const GridItem = ({ name, setShiny }) => {
 					Shiny
 				</ButtonShiny>
 			</Footer>
-		</Cart>
+		</Card>
 	)
 }

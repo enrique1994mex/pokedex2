@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { AuthProvider, AuthRoute } from '../context/Auth'
 import { Home } from '../pages/Home'
 import { Login } from '../pages/Login'
-import '../App.css'
+import { PokemonDetail } from '../pages/PokemonDetail'
 
 function App() {
 	return (
@@ -18,6 +18,7 @@ function App() {
 							</AuthRoute>
 						}
 					/>
+					<Route path='/pokemon/:name' element={<PokemonDetail />} />
 				</Routes>
 			</AuthProvider>
 		</BrowserRouter>
