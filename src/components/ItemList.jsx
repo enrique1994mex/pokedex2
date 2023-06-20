@@ -19,22 +19,22 @@ export const ItemList = ({
 	}, [numPokemon])
 
 	return (
-		<StyledLink to={`pokemon/${data?.name}`}>
-			<Row key={pokemon.name}>
-				<Item>{index + 1 + currentPagination * 5}</Item>
-				<Item>{pokemon.name}</Item>
+		<Row key={pokemon.name}>
+			<Item>{index + 1 + currentPagination * 5}</Item>
+			<Item>{pokemon.name}</Item>
+			<StyledLink to={`pokemon/${data?.name}`}>
 				<Item>
 					<img src={data?.sprites?.front_default} />
 				</Item>
-				<Item>
-					<p>{data?.types[0]?.type?.name}</p>
-					<p>{data?.types[1]?.type?.name}</p>
-				</Item>
-				<Item>
-					<p>{data?.abilities[0]?.ability?.name}</p>
-					<p>{data?.abilities[1]?.ability?.name}</p>
-				</Item>
-			</Row>
-		</StyledLink>
+			</StyledLink>
+			<Item>
+				<p>{data?.types[0]?.type?.name}</p>
+				<p>{data?.types[1]?.type?.name}</p>
+			</Item>
+			<Item>
+				<p>{data?.abilities[0]?.ability?.name}</p>
+				<p>{data?.abilities[1]?.ability?.name}</p>
+			</Item>
+		</Row>
 	)
 }

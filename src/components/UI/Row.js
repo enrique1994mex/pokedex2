@@ -10,6 +10,9 @@ export const Row = styled.div`
 	&:last-child {
 		border-bottom: 1px solid rgba(57, 56, 56, 0.5);
 	}
+	&:nth-child(odd) {
+		background-color: #f9fafe;
+	}
 	&:first-child {
 		background-color: #f1f2f9;
 	}
